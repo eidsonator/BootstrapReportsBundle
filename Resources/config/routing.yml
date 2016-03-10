@@ -1,60 +1,60 @@
 eidsonator_reports_homepage:
     path:     /reports
-    defaults: { _controller: EidsonatorReportsBundle:Default:listReports }
+    defaults: { _controller: BootstrapReportsBundle:Default:listReports }
 
 eidsonator_reports_list_json:
     path:       /reportListJson
-    defaults:   { _controller: EidsonatorReportsBundle:Default:listReportsJson }
+    defaults:   { _controller: BootstrapReportsBundle:Default:listReportsJson }
     options:
         expose: true
 
 eidsonator_reports_display:
     path:       /report/html
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayHtml }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayHtml }
 
 eidsonator_generate_report:
     path:       /report/generate
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayHtml }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayHtml }
 
 eidsonator_generate_xml:
     path:       /report/xml
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayXml }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayXml }
 
 eidsonator_generate_debug:
     path:       /report/debug
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayDebug }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayDebug }
 
 eidsonator_generate_chart:
     path:       /report/chart
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayChart }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayChart }
 
 eidsonator_generate_xlsx:
     path:       /report/xlsx
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayXlsx }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayXlsx }
 
 eidsonator_generate_xls:
     path:       /report/xls
     defaults:   { _controller: BootstrapReportsBundle:Default:displayXls }
 eidsonator_generate_csv:
     path:       /report/csv
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayCsv }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayCsv }
 
 eidsonator_generate_table:
     path:       /report/table
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayTable }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayTable }
 
 eidsonator_generate_text:
     path:       /report/text
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayText }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayText }
 
 eidsonator_report_path:
     path:       /report
-    defaults:   { _controller: EidsonatorReportsBundle:Default:displayHtml }
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayHtml }
 
 eidsonator_report_edit:
     path:       /report/edit
-    defaults:   { _controller: EidsonatorReportsBundle:Default:edit }
+    defaults:   { _controller: BootstrapReportsBundle:Default:edit }
 
 eidsonator_report_email:
     path:       /report/email
-    defaults:   { _controller: EidsonatorReportsBundle:Default:email }
+    defaults:   { _controller: BootstrapReportsBundle:Default:email }
