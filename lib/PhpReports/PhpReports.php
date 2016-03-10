@@ -608,12 +608,15 @@ class PhpReports {
 	 * It supports strict JSON as well as javascript syntax (i.e. unquoted/single quoted keys, single quoted values, trailing commmas)
 	 */
 	public static function json_decode($json, $assoc=false) {
-		//replace single quoted values
-		$json = preg_replace('/:\s*\'(([^\']|\\\\\')*)\'\s*([},])/e', "':'.json_encode(stripslashes('$1')).'$3'", $json);
-		
-		//replace single quoted keys
-		$json = preg_replace('/\'(([^\']|\\\\\')*)\'\s*:/e', "json_encode(stripslashes('$1')).':'", $json);
-		
+		if (version_compare(phpversion(), '7.0.0', '<')) {
+			//replace single quoted values
+			$json = preg_replace('/:\s*\'(([^\']|\\\\\')*)\'\s*([},])/e', "':'.json_encode(stripslashes('$1')).'$3'", $json);
+			
+			//replace single quoted keys
+			$json = preg_replace('/\'(([^\']|\\\\\')*)\'\s*:/e', "json_encode(stripslashes('$1')).':'", $json);
+		} else {
+			//todo implement php 7.0 version
+		}
 		//remove any line breaks in the code
 		$json = str_replace(array("\n","\r"),"",$json);
 		
