@@ -274,7 +274,7 @@ class DefaultController extends Controller
             } else {
                 $title = 'broken';
             }
-            return  $this->render('@SemanticReports/Default/html/page.twig',array(
+            return  $this->render('@BootstrapReports/Default/html/page.twig',array(
                 'title'=> $title,
                 'header'=>'<h2>'.$error_header.'</h2>',
                 'error'=>$e->getMessage(),
@@ -336,7 +336,7 @@ class DefaultController extends Controller
             return new Response($html);
         }
         else {
-            return $this->render('@SemanticReports/Default/html/report_editor.twig', $templateVars);
+            return $this->render('@BootstrapReports/Default/html/report_editor.twig', $templateVars);
         }
 
     }

@@ -12,7 +12,7 @@ class TableReportFormat extends ReportFormatBase
     {
         $report->options['inline_email'] = true;
         $report->use_cache = true;
-        $template = '@SemanticReports/Default/html/table.twig';
+        $template = '@BootstrapReports/Default/html/table.twig';
         $vars = [];
         try {
             $report->renderReportPage($template, $vars);

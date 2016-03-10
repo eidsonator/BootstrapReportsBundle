@@ -9,7 +9,7 @@ class ChartReportFormat extends ReportFormatBase {
 		
 		//always use cache for chart reports
 		//$report->use_cache = true;
-		$template = '@SemanticReports/Default/html/chart_report.twig';
+		$template = '@BootstrapReports/Default/html/chart_report.twig';
 		$vars = [];
 		$report->renderReportPage($template, $vars);
 		return ["template" => $template, "vars" => $vars];

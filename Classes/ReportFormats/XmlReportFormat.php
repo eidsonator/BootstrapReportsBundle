@@ -39,7 +39,7 @@ class XmlReportFormat extends ReportFormatBase
             'datasets' => $datasets,
             'dataset_format' => $dataset_format
         ];
-        $template = '@SemanticReports/Default/xml/report.twig';
+        $template = '@BootstrapReports/Default/xml/report.twig';
         $report->renderReportPage($template, $vars);
         return ["template" => $template, "vars" => $vars];
     }
