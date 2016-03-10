@@ -6,14 +6,14 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel='stylesheet' href='{{ asset('bundles/eidsonatorreports/css/report.css') }}' />
+    <link rel='stylesheet' href='{{ asset('bundles/bootstrapreports/css/report.css') }}' />
     {% if not nodata is defined %}
-        <link rel='stylesheet' href='{{ asset('bundles/eidsonatorreports/css/jquery.dataTables.css') }}' />
+        <link rel='stylesheet' href='{{ asset('bundles/bootstrapreports/css/jquery.dataTables.css') }}' />
     {% endif %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/eidsonatorreports/css/daterangepicker-bs3.css') }}" />
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/eidsonatorreports/css/datepicker.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/eidsonatorreports/css/bootstrap-multiselect.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/eidsonatorreports/css/prettify.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bootstrapreports/css/daterangepicker-bs3.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/bootstrapreports/css/datepicker.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bootstrapreports/css/bootstrap-multiselect.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bootstrapreports/css/prettify.css') }}" />
     <style>
     /*.daterangepicker_holder {
         background: white;
@@ -35,19 +35,19 @@
 {% block javascripts %}
     {{ parent() }}
     {% if has_charts is defined and has_charts %}
-        <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/jquery.browser.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/jquery.iframe-auto-height.plugin.1.9.3.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/jquery.browser.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/jquery.iframe-auto-height.plugin.1.9.3.min.js') }}"></script>
     {% endif %}
     {#{% if nodata is defined and not nodata  %}#}
-        <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/jquery.dataTables.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/jquery.dataTables.min.js') }}"></script>
     {#{% endif %}#}
-    <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/moment-with-langs-2.5.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/daterangepicker-1.3.2.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/bootstrap-datepicker.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/bootstrap-multiselect.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/jquery.stickytableheaders.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/prettify.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/eidsonatorreports/js/lang-sql.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/moment-with-langs-2.5.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/daterangepicker-1.3.2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/bootstrap-datepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/bootstrap-multiselect.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/jquery.stickytableheaders.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/prettify.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/lang-sql.js') }}"></script>
     <script type="text/javascript">
         $("#content").on('click','a[data-role="button"]',function(e) {
             e.preventDefault();
@@ -62,7 +62,7 @@
     {% endif %}
     
     {% if Variables is not empty %}
-        {% include "@EidsonatorReports/Default/html/variable_form.twig" %}
+        {% include "@BootstrapReports/Default/html/variable_form.twig" %}
     {% endif %}
 {% endblock %}
 
@@ -189,9 +189,9 @@
             This report needs more information before running.
             </div>
         {% elseif async %}
-            {% include "@EidsonatorReports/Default/html/report_ajax_loading.twig" %}
+            {% include "@BootstrapReports/Default/html/report_ajax_loading.twig" %}
         {% else %}
-            {% include "@EidsonatorReports/Default/html/report_content.twig" %}
+            {% include "@BootstrapReports/Default/html/report_content.twig" %}
         {% endif %}
     </div>
 

@@ -39,7 +39,7 @@ class DefaultController extends Controller
         $template_vars['report_errors'] = $errors;
         $template_vars['recent_reports'] = $this->getRecentReports();
         $start = microtime(true);
-        return $this->render('@EidsonatorReports/Default/html/report_list.twig',$template_vars);
+        return $this->render('@BootstrapReports/Default/html/report_list.twig',$template_vars);
     }
 
     public function listReportsJsonAction(Request $request)

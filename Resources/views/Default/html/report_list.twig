@@ -1,4 +1,4 @@
-{% extends "@EidsonatorReports/Default/html/page.twig" %}
+{% extends "@BootstrapReports/Default/html/page.twig" %}
 
 {% block title %}Report List{% endblock %}
 
@@ -6,7 +6,7 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('bundles/eidsonatorreports/css/report_list.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/bootstrapreports/css/report_list.css') }}" />
 {% endblock %}
 
 {% block header %}
@@ -18,7 +18,7 @@
 	{% block table_of_contents %}
 		<ul class="nav bs-sidenav">
 			{% for item in reports %}
-				{% include "@EidsonatorReports/Default/html/report_list_table_of_contents_item.twig" %}
+				{% include "@BootstrapReports/Default/html/report_list_table_of_contents_item.twig" %}
 			{% endfor %}
 		</ul>
 	{% endblock %}
@@ -30,7 +30,7 @@
 			{% if report_errors is not empty %}
                 <div class="well well-small">
                     <div>
-						<img src="{{ asset('bundles/eidsonatorreports/images/images/errorIcon.gif') }}" />
+						<img src="{{ asset('bundles/bootstrapreports/images/images/errorIcon.gif') }}" />
                         {{ report_errors|length }} reports contain errors
                         <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#report_errors_holder">See all errors</button>
                     </div>
@@ -58,7 +58,7 @@
 				{% if not loop.first %}
 					<a href="#" class="pull-right" style="font-size: 12px; font-weight:normal;">top</a>
 				{% endif %}
-				{% include "@EidsonatorReports/Default/html/report_list_item.twig" %}
+				{% include "@BootstrapReports/Default/html/report_list_item.twig" %}
 			</div>
 			{% endfor %}
 		{% endblock %}

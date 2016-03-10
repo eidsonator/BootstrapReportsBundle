@@ -1,4 +1,4 @@
-{% extends "@EidsonatorReports/Default/html/page.twig" %}
+{% extends "@BootstrapReports/Default/html/page.twig" %}
 
 {% if options.Name %}
 	{% set Name = options.Name %}
@@ -49,7 +49,7 @@
 
 {% block javascripts %}
 {{ parent() }}
-<script src="{{ asset('bundles/eidsonatorreports/js/ace/ace.js') }}" charset="utf-8"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/ace/ace.js') }}" charset="utf-8"></script>
 <script>
 	var editor = ace.edit("editor");    
 	editor.setTheme("ace/theme/eclipse");
