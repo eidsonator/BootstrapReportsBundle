@@ -4,8 +4,6 @@ namespace Eidsonator\BootstrapReportsBundle\Classes\ReportFormats;
 
 use Eidsonator\BootstrapReportsBundle\lib\PhpReports\ReportFormatBase;
 
-require_once 'C:\xampp\htdocs\lexusChecks\src\Eidsonator\BootstrapReportsBundle\vendor\phpoffice\phpexcel\Classes\PHPExcel.php';
-
 abstract class XlsReportBase extends ReportFormatBase
 {
     private static function columnLetter($c){
