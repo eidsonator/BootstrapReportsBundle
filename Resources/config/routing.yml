@@ -39,6 +39,14 @@ eidsonator_generate_csv:
     path:       /report/csv
     defaults:   { _controller: BootstrapReportsBundle:Default:displayCsv }
 
+eidsonator_generate_json:
+    path:       /report/json
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayJson }
+    
+eidsonator_generate_sql:
+    path:       /report/sql
+    defaults:   { _controller: BootstrapReportsBundle:Default:displaySql }
+    
 eidsonator_generate_table:
     path:       /report/table
     defaults:   { _controller: BootstrapReportsBundle:Default:displayTable }

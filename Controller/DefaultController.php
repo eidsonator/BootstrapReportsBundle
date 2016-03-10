@@ -222,6 +222,14 @@ class DefaultController extends Controller
         return $this->display($request, "Csv");
     }
 
+    public function displayJsonAction(Request $request)
+    {
+        return $this->display($request, "Json");
+    }
+    public function displaySqlAction(Request $request)
+    {
+        return $this->display($request, "Sql");
+    }
     public function displayTableAction(Request $request)
     {
         return $this->display($request, 'Table');
