@@ -1,0 +1,116 @@
+{% for dataset in DataSets %}
+    {% if dataset.title is defined %}<h3>{{dataset.title}}</h3>{% endif %}
+	{% if DataSets|length > 1 %}
+		{% block table_download_link %}
+			{% set dataset_id = loop.index - 1 %}
+			{% if config.report_formats|length > 1 %}
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+						<i class='icon-download'></i> Download/show as <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						{% for format in config.report_formats|keys %}
+							{% if config.report_formats[format] == 'divider' %}
+								<li class="divider"></li>
+							{% else %}
+								<li><a href='{{base}}/report/{{format}}/?dataset={{ dataset_id }}&{{report_querystring}}' class='report_link'>{{config.report_formats[format]}}</a></li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			{% else %}
+				<a href='{{base}}/report/{{config.report_formats|keys[0]}}/?{{report_querystring}}' class='report_link btn'>
+					<i class='icon-download'></i> Download {{config.report_formats[config.report_formats|keys[0]]}}
+				</a>
+			{% endif %}
+		{% endblock %}
+	{% endif %}
+	{% if Formatting is not defined or not Formatting[loop.index-1].nodata %}
+	<table{% if inline_email is not defined %} id='result_table_{{loop.index}}' class='result_table table table-bordered table-striped'{% else %} border="1" cellspacing="0"{% endif %}>
+		{% if dataset.vertical is defined %}
+		<thead>
+			<tr class='header'>
+				{% for value in dataset.vertical[0].values %}
+				<th class="{{ value.class }}">
+					{% if loop.first %}Key{% else %}Value {{ loop.index -1 }}{% endif %}
+				</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		{% if dataset.footer %}
+		<tfoot>
+			{% for row in dataset.footer %}
+				<tr>
+					{% for value in row.values %}
+						<td>{{ value.getValue(true)|raw }}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tfoot>
+		{% endif %}
+		<tbody>
+			{% for row in dataset.vertical %}
+			<tr>
+				{% for value in row.values %}
+				{% if value.is_header is defined and value.is_header %}{% set tag = 'th' %}{% else %}{% set tag = 'td' %}{% endif %}
+				<{{ tag }} class="{{ value.class }}">
+                    {{ value.getValue(true)|raw }}
+				</{{ tag }}>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+		{% else %}
+		<thead>
+			<tr class='header'>
+			{% if dataset.selectable is defined and inline_email is not defined %}
+				<th> </th>
+			{% endif %}
+			{% if dataset.rows is not empty %}
+				{% for value in dataset.rows[0].values %}
+					<th class="{{value.class}}">{{value.key}}</th>
+				{% endfor %}
+			{% else %}
+				<th>No results at this time</th>
+			{% endif %}
+			</tr>
+		</thead>
+		{% if dataset.footer is defined %}
+		<tfoot>
+			{% for row in dataset.footer %}
+				<tr>
+					{% if dataset.selectable and not inline_email %}
+						<td> </td>
+					{% endif %}
+					{% for value in row.values %}
+						<td>{{ value.getValue(true)|raw }}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tfoot>
+		{% endif %}
+		<tbody>
+			{% for row in dataset.rows %}
+			<tr>
+				{% if dataset.selectable is defined and inline_email is not defined %}
+					<td style='padding: 0;'>
+						<div style='width:40px;'>
+							<input type='checkbox' class='selectable' style=' vertical-align:middle;' />
+							{% if not loop.last %}
+							<a href='#' class='filldown' title='Fill Down - copy this value to all rows below this' style='text-decoration:none;'>&darr;</a>
+							{% endif %}
+						</div>
+					</td>
+				{% endif %}
+                {% for value in row.values %}
+                <td class="{{value.class}}{% if dataset.selectable is defined and value.key == dataset.selectable %} selectable{% endif %}">
+                    {{ value.getValue(true)|raw }}
+                </td>
+                {% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+		{% endif %}
+	</table>
+	{% endif %}
+{% endfor %}

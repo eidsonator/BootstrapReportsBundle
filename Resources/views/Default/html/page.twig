@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/bootstrapreports/css/typeahead.js-bootstrap.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block pageBtns %}
+    {% block navdropdown %}
+        {% if recent_reports is defined %}
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Recently Run <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                {% for recent_report in recent_reports %}
+                    <li><a href="{{ recent_report.url }}">{{ recent_report.Name }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endif %}
+    {% endblock %}
+    </ul>
+    {% block searchbar %}
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control search-query" placeholder="Find Report...">
+        </div>
+    </form>
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="header">
+        {% block header %}
+             {% if header is defined %}
+                {{ header|raw }}
+             {% endif %}
+        {% endblock %}
+        </div>
+
+
+        {% block notice_area %}
+            {% if error is defined %}
+                <div class="alert alert-danger">
+                    {% if error.message is defined %}
+                        {{error.message}}
+                    {% else %}
+                        {{error}}
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if notice is defined %}
+                <div class="alert alert-info">
+                    {{notice}}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        <div id="content">
+        {% block content %}
+            {{content|raw}}
+        {% endblock %}
+        </div>
+    </div> <!-- /container -->
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('bundles/bootstrapreports/js/jquery.cookie.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/typeahead.min.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/scripts.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/searchFunctions.js') }}" ></script>
+<script>
+    app.helper.notBusy();
+</script>
+{% endblock %}
+

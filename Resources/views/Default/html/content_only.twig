@@ -1,0 +1,19 @@
+{% block notice_area %}
+	{% if error is defined %}
+		<div class='alert alert-danger'>
+			{{error}}
+		</div>
+	{% endif %}
+
+	{% if notice is defined %}
+		<div class='alert alert-info'>
+			{{notice}}
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+	{% if error is not defined %}
+		{% include "@BootstrapReports/Default/html/report_content.twig" %}
+	{% endif %}
+{% endblock %}

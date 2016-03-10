@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% if title is defined %}}{{ title }}{% endif %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+  </head>
+
+  <body>
+    <div class="container">
+		<div class='header'>
+		{% block header %}
+			{% if header is defined %}
+				{{ header|raw }}
+			{% endif %}
+		{% endblock %}
+		</div>
+
+		{% block notice_area %}
+			{% if error is defined %}
+				<div class='alert alert-danger'>
+					{% if error.message is defined %}
+						{{error.message}}
+					{% else %}
+						{{error}}
+					{% endif %}
+				</div>
+			{% endif %}
+
+			{% if notice is defined %}
+				<div class='alert alert-info'>
+					{{notice}}
+				</div>
+			{% endif %}
+		{% endblock %}
+
+		<div id='content'>
+		{% block content %}
+			{{content|raw}}
+		{% endblock %}
+		</div>
+    </div> <!-- /container -->
+  </body>
+</html>

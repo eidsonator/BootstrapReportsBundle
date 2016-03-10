@@ -1,0 +1,60 @@
+eidsonator_reports_homepage:
+    path:     /reports
+    defaults: { _controller: EidsonatorReportsBundle:Default:listReports }
+
+eidsonator_reports_list_json:
+    path:       /reportListJson
+    defaults:   { _controller: EidsonatorReportsBundle:Default:listReportsJson }
+    options:
+        expose: true
+
+eidsonator_reports_display:
+    path:       /report/html
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayHtml }
+
+eidsonator_generate_report:
+    path:       /report/generate
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayHtml }
+
+eidsonator_generate_xml:
+    path:       /report/xml
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayXml }
+
+eidsonator_generate_debug:
+    path:       /report/debug
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayDebug }
+
+eidsonator_generate_chart:
+    path:       /report/chart
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayChart }
+
+eidsonator_generate_xlsx:
+    path:       /report/xlsx
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayXlsx }
+
+eidsonator_generate_xls:
+    path:       /report/xls
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayXls }
+eidsonator_generate_csv:
+    path:       /report/csv
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayCsv }
+
+eidsonator_generate_table:
+    path:       /report/table
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayTable }
+
+eidsonator_generate_text:
+    path:       /report/text
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayText }
+
+eidsonator_report_path:
+    path:       /report
+    defaults:   { _controller: EidsonatorReportsBundle:Default:displayHtml }
+
+eidsonator_report_edit:
+    path:       /report/edit
+    defaults:   { _controller: EidsonatorReportsBundle:Default:edit }
+
+eidsonator_report_email:
+    path:       /report/email
+    defaults:   { _controller: EidsonatorReportsBundle:Default:email }
