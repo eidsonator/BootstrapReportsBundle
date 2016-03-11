@@ -12,8 +12,6 @@ use Eidsonator\BootstrapReportsBundle\lib\FileSystemCache\lib\FileSystemCache;
 use Eidsonator\BootstrapReportsBundle\lib\simplediff\SimpleDiff;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-
-
 class DefaultController extends Controller
 {
     private $reportDirectory;
@@ -44,7 +42,6 @@ class DefaultController extends Controller
 
     public function listReportsJsonAction(Request $request)
     {
-
         $response = new JsonResponse();
         $parts = [];
         $this->generateReportListRecursive(null, $parts);
@@ -216,6 +213,7 @@ class DefaultController extends Controller
     {
         return $this->display($request, 'Xls');
     }
+
     public function displayCsvAction(Request $request)
     {
         return $this->display($request, "Csv");
@@ -225,10 +223,12 @@ class DefaultController extends Controller
     {
         return $this->display($request, "Json");
     }
+
     public function displaySqlAction(Request $request)
     {
         return $this->display($request, "Sql");
     }
+
     public function displayTableAction(Request $request)
     {
         return $this->display($request, 'Table');
@@ -269,7 +269,7 @@ class DefaultController extends Controller
                 $reportURL =  $this->generateUrl('eidsonator_generate_report');
                 $report->setBaseURL($reportURL);
                 $twigArray['vars'] = $report->getReportVariables($twigArray['vars']);
-                $content = $report->options['Query_Formatted'];
+                $content = isset($report->options['Query_Formatted'])? $report->options['Query_Formatted'] : null;
             }
 
 

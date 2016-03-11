@@ -12,7 +12,7 @@
 <div class="row">
 <ul>
   {% for key, dashboard in dashboards %}
-  <li><a href='{{base}}/dashboard/{{key}}'>{{dashboard.title}}</a></li>
+  <li><a href='{{ url('eidsonator_show_dashboard', { dashboard: key}) }}'>{{dashboard.title}}</a></li>
   {% endfor %}
 </ul>
 </div>

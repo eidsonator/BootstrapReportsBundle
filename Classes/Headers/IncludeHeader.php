@@ -35,7 +35,8 @@ class IncludeHeader extends HeaderBase
 		}
 
 		$container = $report->getContainer();
-		$includedReport = new Report($reportPath, [], null, null, $container);
+		$controller = $report->getController();
+		$includedReport = new Report($reportPath, [], null, null, $container, $controller);
 		
 		//parse any exported headers from the included report
 		foreach($includedReport->exported_headers as $header) {

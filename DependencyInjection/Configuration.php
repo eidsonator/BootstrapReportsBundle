@@ -27,6 +27,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('report_directory')->end()
+                ->scalarNode('dashboard_directory')->end()
                 ->arrayNode('default_file_extension_mapping')
                     ->children()
                         ->scalarNode('sql')->end()

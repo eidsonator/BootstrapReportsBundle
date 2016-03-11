@@ -8,6 +8,10 @@ eidsonator_reports_list_json:
     options:
         expose: true
 
+eidsonator_report:
+    path:       /report
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayHtml }
+
 eidsonator_reports_display:
     path:       /report/html
     defaults:   { _controller: BootstrapReportsBundle:Default:displayHtml }
@@ -35,6 +39,7 @@ eidsonator_generate_xlsx:
 eidsonator_generate_xls:
     path:       /report/xls
     defaults:   { _controller: BootstrapReportsBundle:Default:displayXls }
+
 eidsonator_generate_csv:
     path:       /report/csv
     defaults:   { _controller: BootstrapReportsBundle:Default:displayCsv }
@@ -42,11 +47,11 @@ eidsonator_generate_csv:
 eidsonator_generate_json:
     path:       /report/json
     defaults:   { _controller: BootstrapReportsBundle:Default:displayJson }
-    
+
 eidsonator_generate_sql:
     path:       /report/sql
     defaults:   { _controller: BootstrapReportsBundle:Default:displaySql }
-    
+
 eidsonator_generate_table:
     path:       /report/table
     defaults:   { _controller: BootstrapReportsBundle:Default:displayTable }
@@ -66,3 +71,11 @@ eidsonator_report_edit:
 eidsonator_report_email:
     path:       /report/email
     defaults:   { _controller: BootstrapReportsBundle:Default:email }
+
+eidsonator_dashboard_list:
+    path:     /dashboards
+    defaults:   { _controller: BootstrapReportsBundle:Dashboard:listDashboards }
+
+eidsonator_show_dashboard:
+    path:     /dasboard/{dashboard}
+    defaults: { _controller: BootstrapReportsBundle:Dashboard:showDashboard }

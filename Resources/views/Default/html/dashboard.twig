@@ -31,24 +31,24 @@
     padding: 0;
   }
   </style>
-  {% if dashboard.style %}
-  <style type="text/css">
-    {{ dashboard.style|raw }}
-  </style>
-  {% endif %}
+  {#{% if dashboard.style %}#}
+  {#<style type="text/css">#}
+    {#{{ dashboard.style|raw }}#}
+  {#</style>#}
+  {#{% endif %}#}
 {% endblock %}
 
 {% block javascripts %}
 {{ parent() }}
-<script type='text/javascript' src='{{base}}/public/js/jquery.dataTables.min.js'></script>
-<script type="text/javascript" src="{{base}}/public/js/moment-with-langs-2.5.1.min.js"></script>
-<script type="text/javascript" src="{{base}}/public/js/daterangepicker-1.3.2.js"></script>
-<script type="text/javascript" src="{{base}}/public/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="{{base}}/public/js/bootstrap-multiselect.js"></script>
-<script type="text/javascript" src="{{base}}/public/js/prettify.js"></script>
-<script type="text/javascript" src="{{base}}/public/js/lang-sql.js"></script>
-<script type="text/javascript" src="{{base}}/public/js/jquery.browser.js"></script>
-<script type="text/javascript" src="{{base}}/public/js/jquery.iframe-auto-height.plugin.1.9.3.js"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/moment-with-langs-2.5.1.min.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/daterangepicker-1.3.2.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/bootstrap-multiselect.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/prettify.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/lang-sql.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/jquery.browser.js') }}"></script>
+<script src="{{ asset('bundles/bootstrapreports/js/jquery.iframe-auto-height.plugin.1.9.3.min.js') }}"></script>
 <script type="text/javascript">
     $("#content").on('click','a[data-role="button"]',function(e) {
         e.preventDefault();
@@ -83,7 +83,7 @@ $.each(dashboard.reports, function(i,report) {
   if(report.title) {
     container.append($("<h2 class='report-title'>").text(report.title));
   }
-  container.append("<div class='info'><a class='full-link' href='{{base}}/report/html/?"+$.param(report_data)+"'>View full report</a><span class='rendered'></span></div>");
+  container.append("<div class='info'><a class='full-link' href='{{ url('eidsonator_reports_display') }}/?"+$.param(report_data)+"'>View full report</a><span class='rendered'></span></div>");
   
   if(report.description) {
     container.append($("<p class='description'>").text(report.description));
@@ -93,7 +93,7 @@ $.each(dashboard.reports, function(i,report) {
 
   var render = function() {
     if(!report.format || report.format === 'html' || report.format === 'table') {
-      var report_url = "{{base}}/report/html";
+      var report_url = "{{ url('eidsonator_reports_display') }}";
       
       // Loading message
       holder.html("<p>Loading...</p>");
@@ -103,7 +103,7 @@ $.each(dashboard.reports, function(i,report) {
       });
     }
     else {
-      holder.attr('src',"{{base}}/report/"+report.format+"?"+$.param(report_data));
+      holder.attr('src',"{{ url('eidsonator_report')}}/"+report.format+"?"+$.param(report_data));
     }
   };
       
