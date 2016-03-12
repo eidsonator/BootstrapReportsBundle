@@ -2,13 +2,9 @@
     "name": "eidsonator/bootstrap-reports-bundle",
     "description": "A Symhony2 Bundle for displaying reports from any data source, including SQL and MongoDB",
     "homepage": "http://jdorn.github.com/php-reports/",
-    "keywords": ["reports", "mongodb", "sql", "reporting", "csv", "database"],
+    "keywords": ["reports", "mongodb", "sql", "reporting", "csv", "database", "bootstrap", "symfony"],
     "license": "LGPL-3.0+",
     "authors": [
-        {
-            "name": "Jeremy Dorn",
-            "email": "jeremy@jeremydorn.com"
-        },
         {
             "name": "Todd Eidson",
             "email": "todd@eidson.info"
