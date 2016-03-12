@@ -1,7 +1,6 @@
 {
     "name": "eidsonator/bootstrap-reports-bundle",
-    "description": "A Symhony2 Bundle for displaying reports from any data source, including SQL and MongoDB",
-    "homepage": "http://jdorn.github.com/php-reports/",
+    "description": "A Symfony2 Bundle for displaying reports from any data source, including SQL and MongoDB",
     "keywords": ["reports", "mongodb", "sql", "reporting", "csv", "database", "bootstrap", "symfony"],
     "license": "LGPL-3.0+",
     "authors": [
@@ -11,8 +10,6 @@
         }
     ],
     "require": {
-        "twig/twig": "1.*",
-        "swiftmailer/swiftmailer": "5.*",
         "jdorn/sql-formatter": "dev-master",
         "jdorn/file-system-cache": "dev-master",
         "phpoffice/phpexcel": "dev-develop",
