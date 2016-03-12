@@ -9,14 +9,6 @@
             "email": "todd@eidson.info"
         }
     ],
-    "require": {
-        "jdorn/sql-formatter": "dev-master",
-        "jdorn/file-system-cache": "dev-master",
-        "phpoffice/phpexcel": "dev-develop",
-        "adodb/adodb-php": "dev-master",
-        "lespoilus/spyc": "dev-master",
-        "google/apiclient": "1.0.*@beta"
-    },
     "autoload": {
         "psr-0" : { "Eidsonator\\BootstrapReportsBundle": ""}
         
