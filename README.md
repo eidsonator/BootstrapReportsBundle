@@ -11,6 +11,10 @@ Major features include:
 - Supports multiple database environments (e.g. Production, Staging, and Dev)
 - Fully extendable and customizable
 
+## Installation & Documentation
+
+[Installation & Documentation](https://github.com/eidsonator/BootstrapReportsBundle/blob/master/Resources/doc/index.md) can be found in /Resources/doc/
+
 ## Basic Introduction
 
 Reports are organized and grouped in directories.  Each report is it's own file.
