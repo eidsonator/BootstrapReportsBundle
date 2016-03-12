@@ -33,7 +33,7 @@ The next step is to add configuration settings in your `app/config/config.yml` f
 bootstrap_reports:
     # report_directory and dashboard_directory root is the 'web' directory
     report_directory    : "sample_reports/"
-    dashboard_directory	: "sample_dashboards"
+    dashboard_directory	: "sample_dashboards/"
     default_file_extension_mapping:
         sql :   'Mysql'
         php :   'Php'
@@ -64,3 +64,11 @@ bootstrap_reports:
         server  : %mailer_host%
 ```
 
+## Routing
+
+Next you must add the routing to your `app/config/routing.yml` file.
+
+``` yaml
+reports:
+    resource: '@BootstrapReportsBundle/Resources/config/routing.yml'
+''
