@@ -1,24 +1,17 @@
-Php Reports
-===========
+# Bootstrap Reports Bundle
 
-A reporting framework for managing and displaying nice looking, exportable reports from any data source, including SQL and MongoDB.
+A Symfony2.x bundle for managing and displaying nice looking, exportable reports from any data source, including SQL and MongoDB.
 
 Major features include:
 
-*   Display a report from any data source that can output tabular data (SQL, MongoDB, PHP, etc.)
-*   Output reports in HTML, XML, CSV, JSON, or your own custom format
-*   Add customizable parameters to a report (e.g. start date and end date)
-*   Add graphs and charts with the Google Data Visualization API
-*   Supports multiple database environments (e.g. Production, Staging, and Dev)
-*   Fully extendable and customizable
+- Display a report from any data source that can output tabular data (SQL, MongoDB, PHP, etc.)
+- Output reports in HTML, XML, CSV, JSON, or your own custom format
+- Add customizable parameters to a report (e.g. start date and end date)
+- Add graphs and charts with the Google Data Visualization API
+- Supports multiple database environments (e.g. Production, Staging, and Dev)
+- Fully extendable and customizable
 
-For installation instructions and documentation, check out http://jdorn.github.io/php-reports/
-
-If you have a question, post on the official forum - http://ost.io/@jdorn/php-reports
-
-
-Basic Introduction
-============
+## Basic Introduction
 
 Reports are organized and grouped in directories.  Each report is it's own file.
 
@@ -32,8 +25,7 @@ Reports can be exported to a number of formats including CSV, XLS, JSON, and XML
 The Php Reports framework ties together all these different report types, output formats, and meta-data into
 a consistent interface.
 
-Example Reports
-==============
+## Example Reports
 
 Here's an example SQL report:
 
@@ -121,6 +113,4 @@ Stripe::setApiKey("123456");
 ?>
 ```
 
-Hopefully, you can begin to see the power of Php Reports.
 
-For full documentation and information on getting started, check out http://jdorn.github.io/php-reports/
