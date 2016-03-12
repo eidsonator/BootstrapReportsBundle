@@ -1,6 +1,7 @@
-semantic_reports:
-    # report directory root is the 'web' directory
+bootstrap_reports:
+    # report_directory and dashboard_directory root is the 'web' directory
     report_directory    : "sample_reports/"
+    dashboard_directory : "sample_dashboards"
     default_file_extension_mapping:
         sql :   'Mysql'
         php :   'Php'
