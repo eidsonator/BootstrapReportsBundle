@@ -1,33 +1,97 @@
-{% extends '::base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block stylesheets %}
-    <link href="{{ asset('bundles/bootstrapreports/css/typeahead.js-bootstrap.css') }}" rel="stylesheet">
-{% endblock %}
+    <!-- Le styles -->
+    {% block stylesheets %}
+    <link id="bootstrap" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/typeahead.js-bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 80px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      .container {
+          max-width: 100% !important;
+          padding: 0 20px;
+      }
+      table {
+        max-width: none !important;
+      }
+      #content {
+        width: 98%;
+      }
+      form input, form textarea, form select {
+        max-width: 100%;
+      }
+    </style>
+	{% endblock %}
 
-{% block pageBtns %}
-    {% block navdropdown %}
+	<script>
+		//this allows us to create onReady functions in the body before loading jquery
+		window.queued_jquery_calls = [];
+		window.$ = function(func) {
+			window.queued_jquery_calls.push(func);
+		}
+	</script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/public/js/html5shiv.js"></script>
+      <script src="/public/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+	 -->
+  </head>
+
+  <body>	
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">{% block brand %}PHP Reports{% endblock %}</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                {% block navdropdown %}
         {% if recent_reports is defined %}
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Recently Run <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                {% for recent_report in recent_reports %}
-                    <li><a href="{{ recent_report.url }}">{{ recent_report.Name }}</a></li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% endif %}
-    {% endblock %}
-    </ul>
-    {% block searchbar %}
-    <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control search-query" placeholder="Find Report...">
-        </div>
-    </form>
-    {% endblock %}
-{% endblock %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Recently Run <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            {% for recent_report in recent_reports %}
+                                <li><a href="{{ recent_report.url }}">{{ recent_report.Name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endif %}
+                {% endblock %}
+                </ul>
+                {% block searchbar %}
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control search-query" placeholder="Find Report...">
+                    </div>
+                </form>
+                {% endblock %}
 
-{% block body %}
+                {% block navbar %}{% endblock %}                    
+        </div>
+      </div>
+    </div>
+
     <div class="container">
         <div class="header">
         {% block header %}
@@ -62,15 +126,79 @@
         {% endblock %}
         </div>
     </div> <!-- /container -->
-{% endblock %}
 
-{% block javascripts %}
-<script src="{{ asset('bundles/bootstrapreports/js/jquery.cookie.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/typeahead.min.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/scripts.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/searchFunctions.js') }}" ></script>
-<script>
-    app.helper.notBusy();
-</script>
-{% endblock %}
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% block javascripts %}
+    <!--[if lt IE 9]>
+    <script src="/public/js/jquery-1.10.2.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>
+	<script src="{{ asset('bundles/bootstrapreports/js/scripts.js') }}"></script>
+    <script>
+		//typeahead report search
+		(function() {
+            var data = new Dataset({
+                prefetch: {
+                    url: '{{ url('eidsonator_reports_list_json') }}/report-list-json',
+                    ttl: 0
+                },
+                valueKey: 'name',
+                sorter: function(a,b) {
+                    var val = $('form[role="search"] input.search-query').typeahead('val')[0];
 
+                    //beginning of title match
+                    var beg = new RegExp('^'+val,'i');
+                    //word boundary match
+                    var word = new RegExp('\b'+val,'i');
+
+                    //weights for components of the sort algorithm
+                    var popweight = 2;
+                    var wordweight = 10;
+                    var begweight = 15;
+
+                    //popularity
+                    var popa = a.popularity;
+                    var popb = b.popularity;
+
+                    //beginning of string match
+                    var bega = beg.test(a.name);
+                    var begb = beg.test(b.name);
+
+                    //beginning of word match
+                    var worda = !bega && word.test(a.name);
+                    var wordb = !begb && word.test(b.name);
+
+                    //determine score
+                    var scorea = popa*popweight + bega*begweight + worda*wordweight;
+                    var scoreb = popb*popweight + begb*begweight + wordb*wordweight;
+
+                    return scoreb - scorea;
+                }
+            });
+
+            $('form[role="search"] input.search-query').typeahead({
+                sections: [{
+                    source: data,
+                    highlight: true
+                }]
+            }).on('typeahead:selected',function(e,obj) {
+                window.location.href = obj.url;
+            });
+		})();
+    </script>
+	{% endblock %}
+	<script>
+		//run any queued on-ready scripts
+		for(var i in queued_jquery_calls) {
+			$(queued_jquery_calls[i]);
+		}
+	</script>
+  </body>
+</html>
