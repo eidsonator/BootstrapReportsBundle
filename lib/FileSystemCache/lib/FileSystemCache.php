@@ -288,8 +288,10 @@ class FileSystemCache {
 	 * @return boolean True on success.  Currently, never returns false.
 	 */
 	private static function putContents($fh,FileSystemCacheValue $data) {
-		fwrite($fh,serialize($data));
-		fflush($fh);
+		try{
+			fwrite($fh,serialize($data));
+			fflush($fh);
+		} catch (\Exception $ex){}
 
 		//release lock
 		self::closeFile($fh);
