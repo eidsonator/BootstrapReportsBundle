@@ -29,6 +29,9 @@ class Report extends ContainerAware
     protected $has_run = false;
     protected $fullPath;
 
+    private $environments;
+    private $config;
+
     public function __construct($report, $macros = array(), $environment = null, $use_cache = null, Container $container, $controller)
     {
         $this->report = $report;
