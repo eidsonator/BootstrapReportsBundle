@@ -35,18 +35,18 @@
 {% block javascripts %}
     {{ parent() }}
     {% if has_charts is defined and has_charts %}
-        <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/jquery.browser.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/jquery.iframe-auto-height.plugin.1.9.3.min.js') }}"></script>
     {% endif %}
     {#{% if nodata is defined and not nodata  %}#}
-        <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/jquery.dataTables.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/js/dataTables.bootstrap.min.js"></script>
     {#{% endif %}#}
-    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/moment-with-langs-2.5.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/daterangepicker-1.3.2.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/bootstrap-datepicker.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/bootstrap-multiselect.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.19/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
     <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/jquery.stickytableheaders.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/prettify.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
     <script type="text/javascript" src="{{ asset('bundles/bootstrapreports/js/lang-sql.js') }}"></script>
     <script type="text/javascript">
         $("#content").on('click','a[data-role="button"]',function(e) {
@@ -81,7 +81,7 @@
                         {% for format in config.report_formats|keys %}
                             {% if config.report_formats[format] == 'divider' %}
                             <li class="divider"></li>
-                            {% elseif (DataSets is defined and DataSets|length <= 1) or format != 'csv' %}
+                            {% elseif (DataSets is defined and DataSets|length <= 1) or DataSets is not defined %}
                                 <li><a href='{{ url('eidsonator_report_path') }}/{{format}}?{% if DataSets is defined and DataSets|length > 1 %}datasets=all&{% endif %}{{report_querystring}}' class='report_link'>{{config.report_formats[format]}}</a></li>
                             {% endif %}
                         {% endfor %}
