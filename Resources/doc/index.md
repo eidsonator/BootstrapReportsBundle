@@ -40,12 +40,39 @@ bootstrap_reports:
         js  :   'Mongo'
         ado :   'Ado'
     environments:
-        main:
+        prod:
             mysql:
                 host:   %database_host%
                 user:   %database_user%
                 pass:   %database_password%
                 database: %database_name%
+            ado:
+                uri:    'mysql://username:password@localhost/database'
+            mongo:
+                host:   'localhost'
+                port:   '27017'
+        dev:
+            mysql:
+                host:   %database_host%
+                user:   %database_user%
+                pass:   %database_password%
+                database: %database_name%
+            ado:
+                uri:    'mysql://username:password@localhost/database'
+            mongo:
+                host:   'localhost'
+                port:   '27017'
+        test:
+            mysql:
+                host:   %database_host%
+                user:   %database_user%
+                pass:   %database_password%
+                database: %database_name%
+            ado:
+                uri:    'mysql://username:password@localhost/database'
+            mongo:
+                host:   'localhost'
+                port:   '27017'
     report_formats:
         csv         : 'csv'
         xlsx        : 'Download Excel 2007'
