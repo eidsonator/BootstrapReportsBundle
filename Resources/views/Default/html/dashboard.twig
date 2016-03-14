@@ -40,14 +40,14 @@
 
 {% block javascripts %}
 {{ parent() }}
-<script src="{{ asset('bundles/bootstrapreports/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/moment-with-langs-2.5.1.min.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/daterangepicker-1.3.2.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/bootstrap-datepicker.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/bootstrap-multiselect.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/prettify.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.19/daterangepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
 <script src="{{ asset('bundles/bootstrapreports/js/lang-sql.js') }}"></script>
-<script src="{{ asset('bundles/bootstrapreports/js/jquery.browser.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
 <script src="{{ asset('bundles/bootstrapreports/js/jquery.iframe-auto-height.plugin.1.9.3.min.js') }}"></script>
 <script type="text/javascript">
     $("#content").on('click','a[data-role="button"]',function(e) {
