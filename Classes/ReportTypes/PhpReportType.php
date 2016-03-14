@@ -85,7 +85,7 @@ class PhpReportType extends ReportTypeBase
 		$result = trim($result);
 		
 		$json = json_decode($result, true);
-		if($json === NULL) throw new Exception($result);
+		if($json === NULL) throw new \Exception($result);
 		
 		return $json;
 	}
