@@ -5,6 +5,7 @@ namespace Eidsonator\BootstrapReportsBundle\Classes\ReportTypes;
 use Eidsonator\BootstrapReportsBundle\lib\PhpReports\ReportTypeBase;
 use Eidsonator\BootstrapReportsBundle\lib\PhpReports\Report;
 use Eidsonator\BootstrapReportsBundle\lib\SqlFormatter\lib\SqlFormatter;
+Use Eidsonator\BootstrapReportsBundle\lib\PhpReports\PhpReports;
 
 class AdoReportType extends ReportTypeBase
 {
