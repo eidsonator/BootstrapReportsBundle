@@ -52,7 +52,7 @@ class MongoReportType extends ReportTypeBase {
 		}
 		$eval .= $report->raw_query;
 
-		$environments = PhpReports::$config['environments'];
+		$environments = $report->getEnvironments();
 		$config = $environments[$report->options['Environment']][$report->options['Database']];
 		
 		$mongo_database = isset($report->options['Mongodatabase'])? $report->options['Mongodatabase'] : '';
@@ -77,7 +77,7 @@ class MongoReportType extends ReportTypeBase {
 		$result = trim($result);
 		
 		$json = json_decode($result, true);
-		if($json === NULL) throw new Exception($result);
+		if($json === NULL) throw new \Exception($result);
 		
 		return $json;
 	}
