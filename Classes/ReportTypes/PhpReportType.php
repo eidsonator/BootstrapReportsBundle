@@ -44,12 +44,12 @@ class PhpReportType extends ReportTypeBase
 		}
 		$eval .= "\n?><?php /*END REPORT MACROS*/ ?>".$report->raw_query;
 		
-		$config = PhpReports::$config;
-		
-		//store in both $database and $environment for backwards compatibility
-		$database = PhpReports::$config['environments'][$report->options['Environment']];
-		$environment = $database;
-		
+//		$config = PhpReports::$config;
+//
+//		//store in both $database and $environment for backwards compatibility
+//		$database = PhpReports::$config['environments'][$report->options['Environment']];
+//		$environment = $database;
+//
 		$report->options['Query'] = $report->raw_query;
 		
 		$parts = preg_split('/<\?php \/\*(BEGIN|END) (INCLUDED REPORT|REPORT MACROS)\*\/ \?>/',$eval);
