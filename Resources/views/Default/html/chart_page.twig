@@ -1,12 +1,13 @@
 {% extends "@BootstrapReports/Default/html/blank_page.twig" %}
 {% block javascripts %}
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="{{ asset('bundles/bootstrapreports/js/jquery-2.0.3.min.js') }}"></script>
-	<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>">
+
+    <script>
 	google.load("visualization", "1", {packages:["corechart","geochart","annotatedtimeline"]});
 	</script>
-    <script src="{{ asset('bundles/bootstrapreports/js/timeline.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bootstrapreports/css/timeline.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timelinejs/2.36.0/js/timeline-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/timelinejs/2.36.0/css/timeline.css">
 {% endblock %}
 {% block stylesheets %}
 {{ parent() }}
