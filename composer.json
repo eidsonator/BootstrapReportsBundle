@@ -10,8 +10,9 @@
         }
     ],
     "require": {
-        "phpoffice/phpexcel": "dev-develop",
-        "adodb/adodb-php": "dev-master",
+        "kriswallsmith/assetic": "v1.3.2",
+        "phpoffice/phpexcel": "1.8.1",
+        "adodb/adodb-php": "v5.20.3",
         "lespoilus/spyc": "dev-master",
         "google/apiclient": "1.0.*@beta"
     },
