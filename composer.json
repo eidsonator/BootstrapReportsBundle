@@ -13,8 +13,8 @@
         "kriswallsmith/assetic": "v1.3.2",
         "phpoffice/phpexcel": "1.8.1",
         "adodb/adodb-php": "v5.20.3",
-        "lespoilus/spyc": "dev-master",
-        "google/apiclient": "1.0.*@beta"
+        "rmoiseev/spyc": "0.5.1",
+        "google/apiclient": "1.1.7"
     },
     "autoload": {
         "psr-0" : { "Eidsonator\\BootstrapReportsBundle": ""}
