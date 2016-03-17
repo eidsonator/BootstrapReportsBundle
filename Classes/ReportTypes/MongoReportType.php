@@ -45,20 +45,21 @@ class MongoReportType extends ReportTypeBase {
 				$value = json_encode($value);
 			}
 			else {
-				$value = '"'.addslashes($value).'"';
+				$value = "'" . addslashes($value) . "'";
 			}
-			
+
 			$eval .= 'var '.$key.' = '.$value.';'."\n";
 		}
 		$eval .= $report->raw_query;
 
 		$environments = $report->getEnvironments();
 		$config = $environments[$report->options['Environment']][$report->options['Database']];
-		
-		$mongo_database = isset($report->options['Mongodatabase'])? $report->options['Mongodatabase'] : '';
 
+		$mongoClient = isset($config['path'])? $config['path'] : 'mongo';
+		$mongo_database = isset($report->options['Mongodatabase'])? $report->options['Mongodatabase'] : '';
+		$mongo_database = 'test';
 		//command without eval string
-		$command = 'mongo '.$config['host'].':'.$config['port'].'/'.$mongo_database.' --quiet --eval ';
+		$command = "$mongoClient {$config['host']}:{$config['port']}/$mongo_database --quiet --eval ";
 
 		//easy to read formatted query
 		$report->options['Query_Formatted'] = '<div>
@@ -67,15 +68,20 @@ class MongoReportType extends ReportTypeBase {
 			'<pre class="prettyprint linenums lang-js">'.htmlentities($eval).'</pre>
 		</div>';
 
+		$eval = trim(preg_replace('/\s+/', ' ', $eval));
+
 		//escape the eval string and add it to the command
-		$command .= escapeshellarg($eval);
+		$command .= '"' . $eval . '"';
+
 		$report->options['Query'] = '$ '.$command;
 
 		//include stderr so we can capture shell errors (like "command mongo not found")
 		$result = shell_exec($command.' 2>&1');
 		
 		$result = trim($result);
-		
+		//remove lines up to the first [ in case we got a result, preceded by a worthless message like the 'no need to zero out....'
+		$position = strpos($result, '[ {');
+		$result = substr($result, $position);
 		$json = json_decode($result, true);
 		if($json === NULL) throw new \Exception($result);
 		
