@@ -60,11 +60,16 @@ class AdoReportType extends ReportTypeBase
 	public static function openConnection(&$report) {
 		if(isset($report->conn)) return;
 		
-		$environments = PhpReports::$config['environments'];
+		$environments = $report->getEnvironments();
 		$config = $environments[$report->options['Environment']][$report->options['Database']];
 		
 		if(!($report->conn = ADONewConnection($config['uri']))) {
-			throw new Exception('Could not connect to the database: '.$report->conn->ErrorMsg());
+			if ($report->conn) {
+				throw new \Exception('Could not connect to the database: ' . $report->conn->ErrorMsg());
+			} else {
+				throw new \Exception('Could not connect to the database');
+			}
+
 		}
 	}
 	
@@ -87,7 +92,7 @@ class AdoReportType extends ReportTypeBase
 		$result = $report->conn->Execute($query);
 		
 		if (!$result) {
-			throw new Exception("Unable to get variable options: ".$report->conn->ErrorMsg());
+			throw new \Exception("Unable to get variable options: ".$report->conn->ErrorMsg());
 		}
 
 		$options = array();
@@ -116,13 +121,13 @@ class AdoReportType extends ReportTypeBase
 			if(is_array($value)) {
 				$first = true;
 				foreach($value as $key2=>$value2) {
-					$value[$key2] = mysql_real_escape_string(trim($value2));
+					$value[$key2] = trim($value2);
 					$first = false;
 				}
 				$macros[$key] = $value;
 			}
 			else {
-				$macros[$key] = mysql_real_escape_string($value);
+				$macros[$key] = $value;
 			}
 			
 			if($value === 'ALL') $macros[$key.'_all'] = true;
@@ -133,7 +138,7 @@ class AdoReportType extends ReportTypeBase
 		$macros['environment'] = PhpReports::$config['environments'][$report->options['Environment']];
 		
 		//expand macros in query
-		$sql = PhpReports::render($report->raw_query,$macros);
+		$sql = $report->expandSql($report->raw_query,$macros);
 		
 		$report->options['Query'] = $sql;
 
@@ -149,13 +154,13 @@ class AdoReportType extends ReportTypeBase
 			
 			$result = $report->conn->Execute($query);
 			if(!$result) {
-				throw new Exception("Query failed: ".$report->conn->ErrorMsg());
+				throw new \Exception("Query failed: ".$report->conn->ErrorMsg());
 			}
 			
 			//if this query had an assert=empty flag and returned results, throw error
 			if(preg_match('/^--[\s+]assert[\s]*=[\s]*empty[\s]*\n/',$query)) {
 				if($result->GetAssoc()) {
-					throw new Exception("Assert failed.  Query did not return empty results.");
+					throw new \Exception("Assert failed.  Query did not return empty results.");
 				}
 			}
 		}
