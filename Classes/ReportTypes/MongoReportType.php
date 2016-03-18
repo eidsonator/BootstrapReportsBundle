@@ -68,6 +68,14 @@ class MongoReportType extends ReportTypeBase {
 			'<pre class="prettyprint linenums lang-js">'.htmlentities($eval).'</pre>
 		</div>';
 
+		//  Removes multi-line comments and does not create
+		//  a blank line, also treats white spaces/tabs
+		$eval = preg_replace('!/\*.*?\*/!s', '', $eval);
+		//  Removes single line '//' comments, treats blank characters
+		$eval = preg_replace('![ \t]*//.*[ \t]*[\r\n]!', '', $eval);
+		//  Strip blank lines
+		$eval = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $eval);
+		//remove new lines
 		$eval = trim(preg_replace('/\s+/', ' ', $eval));
 
 		//escape the eval string and add it to the command
