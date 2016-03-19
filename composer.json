@@ -20,6 +20,5 @@
         "psr-0" : { "Eidsonator\\BootstrapReportsBundle": ""}
         
     },
-    "target-dir": "Eidsonator/BootstrapReportsBundle",
-    "minimum-stability": "stable"
+    "target-dir": "Eidsonator/BootstrapReportsBundle"
 }
