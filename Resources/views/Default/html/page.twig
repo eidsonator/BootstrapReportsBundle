@@ -28,15 +28,7 @@
       }
     </style>
 	{% endblock %}
-
-	<script>
-		//this allows us to create onReady functions in the body before loading jquery
-		window.queued_jquery_calls = [];
-		window.$ = function(func) {
-			window.queued_jquery_calls.push(func);
-		}
-	</script>
-
+    {% include "@BootstrapReports/Default/html/jquery_queue.twig" %}
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="/public/js/html5shiv.js"></script>
@@ -130,75 +122,6 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascripts %}
-    <!--[if lt IE 9]>
-    <script src="/public/js/jquery-1.10.2.min.js"></script>
-    <![endif]-->
-    <!--[if (gte IE 9) | (!IE)]><!-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <!--<![endif]-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="{{ asset('bundles/bootstrapreports/js/typeahead.min.js') }}"></script>
-	<script src="{{ asset('bundles/bootstrapreports/js/scripts.js') }}"></script>
-    <script>
-		//typeahead report search
-		(function() {
-            var data = new Dataset({
-                prefetch: {
-                    url: '{{ url('eidsonator_reports_list_json') }}',
-                    ttl: 0
-                },
-                valueKey: 'name',
-                sorter: function(a,b) {
-                    var val = $('form[role="search"] input.search-query').typeahead('val')[0];
-
-                    //beginning of title match
-                    var beg = new RegExp('^'+val,'i');
-                    //word boundary match
-                    var word = new RegExp('\b'+val,'i');
-
-                    //weights for components of the sort algorithm
-                    var popweight = 2;
-                    var wordweight = 10;
-                    var begweight = 15;
-
-                    //popularity
-                    var popa = a.popularity;
-                    var popb = b.popularity;
-
-                    //beginning of string match
-                    var bega = beg.test(a.name);
-                    var begb = beg.test(b.name);
-
-                    //beginning of word match
-                    var worda = !bega && word.test(a.name);
-                    var wordb = !begb && word.test(b.name);
-
-                    //determine score
-                    var scorea = popa*popweight + bega*begweight + worda*wordweight;
-                    var scoreb = popb*popweight + begb*begweight + wordb*wordweight;
-
-                    return scoreb - scorea;
-                }
-            });
-
-            $('form[role="search"] input.search-query').typeahead({
-                sections: [{
-                    source: data,
-                    highlight: true
-                }]
-            }).on('typeahead:selected',function(e,obj) {
-                window.location.href = obj.url;
-            });
-		})();
-    </script>
-	{% endblock %}
-	<script>
-		//run any queued on-ready scripts
-		for(var i in queued_jquery_calls) {
-			$(queued_jquery_calls[i]);
-		}
-	</script>
+    {% include "@BootstrapReports/Default/html/javascripts.twig" %}
   </body>
 </html>

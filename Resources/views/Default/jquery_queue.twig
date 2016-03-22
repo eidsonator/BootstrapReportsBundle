@@ -1,0 +1,7 @@
+<script>
+    //this allows us to create onReady functions in the body before loading jquery
+    window.queued_jquery_calls = [];
+    window.$ = function(func) {
+        window.queued_jquery_calls.push(func);
+    }
+</script>
