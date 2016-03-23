@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "kriswallsmith/assetic": "v1.3.2",
+        "symfony/assetic-bundle": "v2.8.0",
         "phpoffice/phpexcel": "1.8.1",
         "adodb/adodb-php": "v5.20.3",
         "rmoiseev/spyc": "0.5.1",
