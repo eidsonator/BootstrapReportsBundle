@@ -214,6 +214,11 @@ class DefaultController extends Controller
         return $this->display($request, 'Xls');
     }
 
+    public function displayRawAction(Request $request)
+    {
+        return $this->display($request, "Raw");
+    }
+
     public function displayCsvAction(Request $request)
     {
         return $this->display($request, "Csv");

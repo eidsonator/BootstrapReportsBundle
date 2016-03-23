@@ -64,6 +64,10 @@ eidsonator_report_path:
     path:       /report
     defaults:   { _controller: BootstrapReportsBundle:Default:displayHtml }
 
+eidsonator_report_raw:
+    path:       /report/raw
+    defaults:   { _controller: BootstrapReportsBundle:Default:displayRaw }
+
 eidsonator_report_edit:
     path:       /report/edit
     defaults:   { _controller: BootstrapReportsBundle:Default:edit }
