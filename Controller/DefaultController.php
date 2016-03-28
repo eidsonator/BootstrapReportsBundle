@@ -44,7 +44,7 @@ class DefaultController extends Controller
     {
         $response = new JsonResponse();
         $parts = [];
-        $this->generateReportListRecursive(null, $parts);
+        $this->generateReportListRecursive($parts);
         $response->setData($parts);
         return $response;
     }
@@ -134,7 +134,7 @@ class DefaultController extends Controller
         return $output;
     }
 
-    protected function generateReportListRecursive($reports = null, &$parts)
+    protected function generateReportListRecursive(&$parts, $reports = null)
     {
         if ($reports === null) {
             $errors = array();
@@ -160,7 +160,7 @@ class DefaultController extends Controller
                 if (!isset($report['Title']) || !$report['Title']) {
                     continue;
                 }
-                $part = $this->generateReportListRecursive($report['children'], $parts);
+                $part = $this->generateReportListRecursive($parts, $report['children']);
                 //$part = trim(self::getReportListJSON($report['children']),'[],');
 //                if($part) $parts[] = $part;
             } else {
