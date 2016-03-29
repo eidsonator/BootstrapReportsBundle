@@ -131,9 +131,6 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('enabled')->end()
                         ->scalarNode('from')->end()
-                        ->scalarNode('method')->end()
-                        ->scalarNode('server')->end()
-                        ->scalarNode('port')->end()
                     ->end()
                 ->end()
             ->end();
