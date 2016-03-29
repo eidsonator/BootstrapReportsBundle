@@ -74,7 +74,7 @@ eidsonator_report_edit:
 
 eidsonator_report_email:
     path:       /report/email
-    defaults:   { _controller: BootstrapReportsBundle:Default:email }
+    defaults:   { _controller: BootstrapReportsBundle:Email:email }
 
 eidsonator_dashboard_list:
     path:     /dashboards
