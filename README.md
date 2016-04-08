@@ -1,6 +1,9 @@
 # Bootstrap Reports Bundle
 
-A Symfony2.x bundle for managing and displaying nice looking, exportable reports from any data source, including SQL and MongoDB.
+
+**Now works with Symfony2.x and Symfony3.x**
+
+A Symfony bundle for managing and displaying nice looking, exportable reports from any data source, including SQL and MongoDB.
 
 Major features include:
 
@@ -14,6 +17,10 @@ Major features include:
 ## Installation & Documentation
 
 [Installation & Documentation](https://github.com/eidsonator/BootstrapReportsBundle/blob/master/Resources/doc/index.md) can be found in /Resources/doc/
+
+## Reporting an issue or a feature request
+
+Issues and feature requests can be submitted to the [Github issue tracker](https://github.com/eidsonator/BootstrapReportsBundle/issues).
 
 ## Basic Introduction
 

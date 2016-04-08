@@ -1,6 +1,6 @@
 {
     "name": "eidsonator/bootstrap-reports-bundle",
-    "description": "A Symfony2 Bundle for displaying reports from any data source, including SQL and MongoDB",
+    "description": "A Symfony (2 & 3) Bundle for displaying reports from any data source, including SQL and MongoDB",
     "keywords": ["reports", "mongodb", "sql", "reporting", "csv", "database", "bootstrap", "symfony"],
     "license": "LGPL-3.0+",
     "authors": [
