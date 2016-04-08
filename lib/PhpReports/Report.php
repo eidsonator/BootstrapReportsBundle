@@ -2,13 +2,15 @@
 
 namespace Eidsonator\BootstrapReportsBundle\lib\PhpReports;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\Container;
 use Eidsonator\BootstrapReportsBundle\Classes\Headers;
 use Eidsonator\BootstrapReportsBundle\lib\FileSystemCache\lib\FileSystemCache;
 
-class Report extends ContainerAware
+class Report
 {
+    use ContainerAwareTrait;
+
     public $report;
     public $macros = array();
     public $exported_headers = array();
